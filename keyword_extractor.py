@@ -1,15 +1,13 @@
 import spacy
 
-# Auto-download model if not present
-try:
-    nlp = spacy.load("en_core_web_sm")
-except:
-    from spacy.cli import download
-    download("en_core_web_sm")
-    nlp = spacy.load("en_core_web_sm")
-
-
 def extract_keywords(text):
+    try:
+        nlp = spacy.load("en_core_web_sm")
+    except:
+        from spacy.cli import download
+        download("en_core_web_sm")
+        nlp = spacy.load("en_core_web_sm")
+
     doc = nlp(text)
 
     keywords = []
